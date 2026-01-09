@@ -1,7 +1,53 @@
 <!DOCTYPE html>
 <html>
-<head><title>Checkout</title></head>
+<head>
+  <title>Checkout</title>
+  <style>
+    body { font-family: Arial; padding:40px; background:#f5f7fa }
+    .box { background:#fff; padding:20px; margin-bottom:20px; border-radius:8px }
+    button { padding:10px 16px; cursor:pointer }
+  </style>
+</head>
 <body>
-<h1 data-test-id="checkout-container">Checkout Page</h1>
+
+<div data-test-id="checkout-container">
+
+  <div class="box" data-test-id="order-summary">
+    <h2>Complete Payment</h2>
+    <div>Amount: <span data-test-id="order-amount">?500</span></div>
+    <div>Order ID: <span data-test-id="order-id">order_demo</span></div>
+  </div>
+
+  <div class="box" data-test-id="payment-methods">
+    <button data-test-id="method-upi" onclick="showUPI()">UPI</button>
+    <button data-test-id="method-card" onclick="showCard()">Card</button>
+  </div>
+
+  <form class="box" data-test-id="upi-form" style="display:none">
+    <input data-test-id="vpa-input" placeholder="username@bank"/><br/><br/>
+    <button data-test-id="pay-button">Pay</button>
+  </form>
+
+  <form class="box" data-test-id="card-form" style="display:none">
+    <input data-test-id="card-number-input" placeholder="Card Number"/><br/><br/>
+    <input data-test-id="expiry-input" placeholder="MM/YY"/><br/><br/>
+    <input data-test-id="cvv-input" placeholder="CVV"/><br/><br/>
+    <input data-test-id="cardholder-name-input" placeholder="Name"/><br/><br/>
+    <button data-test-id="pay-button">Pay</button>
+  </form>
+
+</div>
+
+<script>
+function showUPI(){
+  document.querySelector("[data-test-id='upi-form']").style.display="block";
+  document.querySelector("[data-test-id='card-form']").style.display="none";
+}
+function showCard(){
+  document.querySelector("[data-test-id='card-form']").style.display="block";
+  document.querySelector("[data-test-id='upi-form']").style.display="none";
+}
+</script>
+
 </body>
 </html>
